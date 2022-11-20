@@ -51,6 +51,7 @@ if test -f "$FILE"; then
     '
 else
     sudo bash -c  -i '
+    dpkg --add-architecture i386 &&
     apt update -y &&
     apt upgrade -y &&
 	LOG+="
