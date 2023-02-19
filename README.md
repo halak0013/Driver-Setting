@@ -1,9 +1,32 @@
 # Pardus-Debain-driver
-Linux sistemlerde Nvida sürücülerinin yüklenmesi normal kullanıcı için zor olduğunda bunu için işi basitleştirmeye çalıştım inşAllah
+Linux sistemlerde bazı sürücülerin yüklenmesi normal kullanıcı için zor olduğundan bu işi basitleştirmeye çalıştım inşAllah
+
+* uygulama
+
+![resim](https://user-images.githubusercontent.com/75750279/219940482-3940d222-7274-499d-b3f8-2aeafd84288a.png)
+## Nasıl çalışır
+        
+- Program sizin yerinize 
+    - gerekli nevidia depolarını sisteminize ekleyerek,
+    - gerekli paketleri yükleyerek
+    - giriş ekran ayarlarını yaparak
+    - tema ekleyerek
+    yüklemeyi yapar
+- grafik kartı geçişi envycontrol ile birilkte yapılıyor
+    - envycontrol https://github.com/bayasdev/envycontrol
+    - geçiş işlemi ilk olarak ikili moda geçilmesi gerekiyor
+
+## Çalıştırmak için
+```python3 main.py```
+* hangi yöntemle yüklme yapcağınızı seçin
+* yüklendikten sonra hangi moda geçmek isterseniz o modu seçemlisiniz
+
 
 * nvidianın kendi ayarları
 
 ![resim](https://user-images.githubusercontent.com/75750279/204157502-05292255-1531-4a23-9de7-61324af6ec66.png)
+![resim](https://user-images.githubusercontent.com/75750279/219940580-c8e98dbd-774d-4101-b8a4-4a0471052b36.png)
+
 
 * davinci 18
 
