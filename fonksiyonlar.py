@@ -72,16 +72,6 @@ echo 'deb [signed-by=/usr/share/keyrings/nvidia-drivers.gpg] https://developer.d
 sudo add-apt-repository contrib
 sudo apt update
 sudo apt install sddm -y
-sudo mkdir -p /etc/sddm.conf.d/
-echo "[Theme]
-Current=McMojave
-" | sudo tee /etc/sddm.conf.d/sddm.conf
-echo "[Theme]
-Current=McMojave
-" | sudo tee /etc/sddm.conf
-sudo cp -rf {konum}/theme.zip /usr/share/sddm/themes/
-sudo unzip /usr/share/sddm/themes/theme.zip
-exit
 """
     if tur == A_CV:
         komut += "sudo apt install nvidia-driver cuda nvidia-kernel-open-dkms nvidia-smi nvidia-settings -y"
