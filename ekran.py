@@ -22,10 +22,10 @@ class Ana_Ekran(g.Window):
         self.rd_bt_k_kaynak = g.RadioButton.new_with_label_from_widget(
             self.rd_bt_a_kaynak, "kapalı kaynak")
 
-        self.rd_bt_v_cuda = g.RadioButton.new_with_label_from_widget(
-            None, "cuda ile")
         self.rd_bt_y_cuda = g.RadioButton.new_with_label_from_widget(
-            self.rd_bt_v_cuda, "cuda olmadan")
+            None, "cuda olmadan")
+        self.rd_bt_v_cuda = g.RadioButton.new_with_label_from_widget(
+            self.rd_bt_y_cuda, "cuda ile")
 
         self.bt_yukle = g.Button(label="yükle")
         self.bt_yukle.connect("clicked", self.yukle_fun)
