@@ -21,7 +21,7 @@ Linux sistemlerde bazı sürücülerin yüklenmesi normal kullanıcı için zor 
 ```python3 main.py```
 * hangi yöntemle yüklme yapcağınızı seçin
 * yüklendikten sonra hangi moda geçmek isterseniz o modu seçemlisiniz
-
+## yükleme yaparken sddm giriş yönetcisini seçmeyi unutmayın. şu anlık sadece sddm için çalışıyor
 
 * nvidianın kendi ayarları
 
