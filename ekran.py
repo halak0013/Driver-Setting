@@ -47,13 +47,13 @@ class Ana_Ekran(g.Window):
         self.bt_nvidia = g.Button(label="Nvidia")
         self.bt_nvidia.connect("clicked", self.nvidia_fun)
 
-        self.bt_entegre = g.Button(label="entegre grafik")
+        self.bt_entegre = g.Button(label="Tümleşik grafik")
         self.bt_entegre.connect("clicked", self.entegre_fun)
 
         self.kutu_grafik.pack_start(self.bt_nvidia, True, True, 3)
         self.kutu_grafik.pack_start(self.bt_entegre, True, True, 3)
 
-        self.bt_ikisi = g.Button(label="ikisi bir arada")
+        self.bt_ikisi = g.Button(label="İkisi bir arada")
         self.bt_ikisi.connect("clicked", self.ikisi_fun)
 
         self.lb_cikti = g.Label("İşlem çıktıları burada gözükür")
@@ -80,7 +80,18 @@ class Ana_Ekran(g.Window):
             else: yukle(K_CY)
 
     def nasil_fun(self,widget):
-        pass
+        uyari("""Nasıl çalışır
+        
+- Program sizin yerinize 
+    - gerekli nevidia depolarını sisteminize ekleyerek,
+    - gerekli paketleri yükleyerek
+    - giriş ekran ayarlarını yaparak
+    - tema ekleyerek
+    yüklemeyi yapar
+- grafik kartı geçişi envycontrol ile birilkte yapılıyor
+    - envycontrol https://github.com/bayasdev/envycontrol
+    -geçiş işlemi ilk olarak ikili moda geçilmesi gerekiyor
+""")
 
     def web_fun(self,widget):
         webbrowser.open("https://github.com/halak0013/Pardus-Debain-driver")
