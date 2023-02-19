@@ -193,13 +193,13 @@ def switcher(mode, display_manager = ''):
             # Power off the Nvidia GPU with udev rules
             _create_file(UDEV_INTEGRATED_PATH, UDEV_INTEGRATED)
         except Exception as e:
-            fonksiyonlar.uyari(f'Error: {e}')
+            fonksiyonlar.uyari(f'Hata: {e}')
             sys.exit(1)
         _rebuild_initramfs()
     elif mode == 'hybrid':
         _cleanup()
         # Enable modeset for Nvidia driver
-        choice = fonksiyonlar.sorgu("Enable RTD3 Power Management?")
+        choice = fonksiyonlar.sorgu("RTD3 güç yönetcisi etkinleştirilsin mi?")
         if choice in yes:
             _create_file(UDEV_PM_PATH, UDEV_PM)
             _create_file(MODESET_PATH, MODESET_PM)
@@ -225,12 +225,12 @@ def switcher(mode, display_manager = ''):
                 _setup_display_manager(display_manager)
             # Enable modeset for Nvidia driver
             _create_file(MODESET_PATH, MODESET_CONTENT)
-            choice = fonksiyonlar.sorgu("Enable ForceCompositionPipeline?")
+            choice = fonksiyonlar.sorgu("Kompozisyon ardışık düzenini zorla etkinleştirilsin mi(ForceCompositionPipeline)?")
             if choice in yes:
                 enable_comp = True
             else:
                 enable_comp = False
-            choice = fonksiyonlar.sorgu("Enable Coolbits?")
+            choice = fonksiyonlar.sorgu("Coolbit etkinleştirilsin mi?")
             if choice in yes:
                 enable_coolbits = True
             else:
@@ -242,14 +242,14 @@ def switcher(mode, display_manager = ''):
             elif enable_coolbits:
                 _create_file(EXTRA_PATH,EXTRA_CONTENT+COOLBITS+'EndSection')
         except Exception as e:
-            fonksiyonlar.uyari(f'Error: {e}')
+            fonksiyonlar.uyari(f'Hata: {e}')
             sys.exit(1)
         _rebuild_initramfs()
     else:
-        fonksiyonlar.uyari('Error: provided graphics mode is not valid')
-        fonksiyonlar.uyari('Supported graphics modes: integrated, nvidia, hybrid')
+        fonksiyonlar.uyari('Hata: sağlanan grafik modu geçerli değil')
+        fonksiyonlar.uyari('Desteklenen grafik modu: entege, nvidia, ikili')
         sys.exit(1)
-    fonksiyonlar.uyari(f'Graphics mode set to: {mode}\nPlease reboot your computer for changes to apply!')
+    fonksiyonlar.uyari(f'Grafik modu {mode} ayarlandı\nLütfen etkinleştirmek için yeniden başlatın!')
     exit(1)
 
 def _cleanup():
@@ -260,7 +260,7 @@ def _cleanup():
             os.remove(file)
         except OSError as e:
             if e.errno != 2:
-                fonksiyonlar.uyari(f'Error: {e}')
+                fonksiyonlar.uyari(f'Hata: {e}')
                 sys.exit(1)
     # restore Xsetup backup if found
     if os.path.exists(SDDM_XSETUP_PATH+'.bak'):
@@ -276,7 +276,7 @@ def _get_igpu_vendor():
     elif pattern_amd.findall(lspci):
         return 'amd'
     else:
-        fonksiyonlar.uyari('Error: could not find Intel or AMD iGPU')
+        fonksiyonlar.uyari('Hata: Intel or AMD iGPU bulunamıyor')
         sys.exit(1)
 
 def _get_amd_igpu_name():    
@@ -297,7 +297,7 @@ def _get_pci_bus():
         # Need to return Bus ID in PCI:X:X:X format
         return ':'.join([str(int(element, 16)) for element in pattern.findall(lspci)[0][0].replace('.', ':').split(':')])
     except Exception:
-        fonksiyonlar.uyari(f'Error: switching directly from integrated to Nvidia mode is not supported\nTry switching to hybrid mode first!')
+        fonksiyonlar.uyari(f'Hata: doğrudan tümleşik moddan Nvidia moduna geçiş desteklenmez\nİlk olarak ikili moda geçiniz!')
         sys.exit(1)
 
 def check_display_manager():
@@ -309,7 +309,7 @@ def check_display_manager():
             display_manager = pattern.findall(f.read())[0][1]
     except Exception:
         display_manager = ''
-        fonksiyonlar.uyari('Warning: automatic Display Manager detection is not available')
+        fonksiyonlar.uyari('Uyarı: Otomatik görüntü yönetci bulunamdı')
     finally:
         return display_manager
 
@@ -339,8 +339,8 @@ def _setup_display_manager(display_manager):
         if not os.path.exists(os.path.dirname(LIGHTDM_CONFIG_PATH)):
             _create_file(LIGHTDM_CONFIG_PATH, LIGHTDM_CONFIG_CONTENT)
     elif display_manager not in ['', 'gdm', 'gdm3']:
-        fonksiyonlar.uyari('Error: provided Display Manager is not valid')
-        fonksiyonlar.uyari('Supported Display Managers: gdm, sddm, lightdm')
+        fonksiyonlar.uyari('Hata: Sağlanan Görüntü Yöneticisi geçerli değil')
+        fonksiyonlar.uyari('desteklene görüntü yöneticisi: gdm, sddm, lightdm')
         sys.exit(1)
 
 def _rebuild_initramfs():
@@ -356,13 +356,13 @@ def _rebuild_initramfs():
         fonksiyonlar.uyari('Rebuilding initramfs...')
         p = subprocess.run(command, stdout=subprocess.DEVNULL)
         if p.returncode == 0:
-            fonksiyonlar.uyari('Successfully rebuilt initramfs!')
+            fonksiyonlar.uyari('initramfs inşası başarılı!')
         else:
-            fonksiyonlar.uyari('Error: an error ocurred rebuilding the initramfs')
+            fonksiyonlar.uyari('Hata: initramfs yeniden oluşturulurken bir hata oluştu')
 
 def _check_root():
     if not os.geteuid() == 0:
-        fonksiyonlar.uyari('Error: this operation requires root privileges')
+        fonksiyonlar.uyari('Hata: bu işlem kök(root) yetkisi gerektirir')
         sys.exit(1)
 
 def _create_file(path, content):
@@ -379,7 +379,7 @@ def _query_mode():
         mode = 'nvidia'
     else:
         mode = 'hybrid'
-    fonksiyonlar.uyari(f'Current graphics mode is: {mode}')
+    fonksiyonlar.uyari(f'şu anki grafik modu: {mode}')
 
 def _reset_sddm():
     _check_root()
@@ -387,12 +387,12 @@ def _reset_sddm():
         _create_file(SDDM_XSETUP_PATH, SDDM_XSETUP_CONTENT)
         subprocess.run(['chmod', '+x', SDDM_XSETUP_PATH], stdout=subprocess.DEVNULL)
     except Exception as e:
-        fonksiyonlar.uyari(f'Error: {e}')
+        fonksiyonlar.uyari(f'Hata: {e}')
         sys.exit(1)
-    fonksiyonlar.uyari('Operation completed successfully!')
+    fonksiyonlar.uyari('İşlem başarıyla tamamlandı!')
 
 def _print_version():
-    fonksiyonlar.uyari(f'EnvyControl version {VERSION}')
+    fonksiyonlar.uyari(f'EnvyControl sürümü {VERSION}')
 
 def main():
     # argument parsing
@@ -423,8 +423,8 @@ def main():
         else:
             switcher(args.switch)
     elif args.dm and not args.switch:
-        fonksiyonlar.uyari('Error: this option is intended to be used with --switch nvidia')
-        fonksiyonlar.uyari('Example: sudo envycontrol --switch nvidia --dm sddm')
+        fonksiyonlar.uyari('Hata: bu seçeneğin --switch nvidia ile kullanılması amaçlanmıştır')
+        fonksiyonlar.uyari('Örneğin: sudo envycontrol --switch nvidia --dm sddm')
         sys.exit(1)
 
 if __name__ == '__main__':
