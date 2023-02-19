@@ -53,11 +53,12 @@ def degistir(mode):
     konum = os.getcwd()
     if goruntu_yoneticisi == "sddm":
         ekle = "--dm sddm"
-    komut = f"sudo python3 {konum}/envycontrol.py -s {mode} {ekle}"
+    komut = f"""sudo python3 {konum}/envycontrol.py -s {mode} {ekle}
+exit
+"""
     subprocess.Popen(['x-terminal-emulator', '-e',
                       f'bash -c "echo \'{komut}\' > betik.sh && chmod +x betik.sh && ./betik.sh; exec bash"'], cwd="/tmp/")
-    print(
-        f"sudo python3 {konum}/envycontrol/envycontrol.py -s {mode} {ekle}")
+
 
 
 def yukle(tur):
@@ -70,7 +71,8 @@ curl -fSsL https://developer.download.nvidia.com/compute/cuda/repos/debian11/x86
 echo 'deb [signed-by=/usr/share/keyrings/nvidia-drivers.gpg] https://developer.download.nvidia.com/compute/cuda/repos/debian11/x86_64/ /' | sudo tee /etc/apt/sources.list.d/nvidia-drivers.list
 sudo add-apt-repository contrib
 sudo apt update
-sudo apt install sddm
+sudo apt install sddm -y
+sudo mkdir -p /etc/sddm.conf.d/
 echo "[Theme]
 Current=McMojave
 " | sudo tee /etc/sddm.conf.d/sddm.conf
@@ -79,6 +81,7 @@ Current=McMojave
 " | sudo tee /etc/sddm.conf
 sudo cp -rf {konum}/theme.zip /usr/share/sddm/themes/
 sudo unzip /usr/share/sddm/themes/theme.zip
+exit
 """
     if tur == A_CV:
         komut += "sudo apt install nvidia-driver cuda nvidia-kernel-open-dkms nvidia-smi nvidia-settings -y"
