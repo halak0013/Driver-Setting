@@ -69,16 +69,16 @@ class Ana_Ekran(g.Window):
             self.ayarlamalar_kutu.pack_start(ele, True, True, 3)
 
     def yukle_fun(self, widget):
-        if self.rd_bt_a_kaynak.get_active():
+        """ if self.rd_bt_a_kaynak.get_active():
             if self.rd_bt_v_cuda.get_active():
                 yukle(A_CV)
             else:
                 yukle(A_CY)
+        else: """
+        if self.rd_bt_v_cuda.get_active():
+            yukle(K_CV)
         else:
-            if self.rd_bt_v_cuda.get_active():
-                yukle(K_CV)
-            else:
-                yukle(K_CY)
+            yukle(K_CY)
 
     def nasil_fun(self, widget):
         uyari("""Nasıl çalışır
