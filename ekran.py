@@ -1,9 +1,9 @@
 # Bismillahirrahmanirrahim
+import webbrowser
 from fonksiyonlar import *
 from gi.repository import Gtk as g, Gdk
 import gi
 gi.require_version("Gtk", "3.0")
-import webbrowser
 
 
 class Ana_Ekran(g.Window):
@@ -17,10 +17,9 @@ class Ana_Ekran(g.Window):
         self.ana_kutu.add(self.secenekler_kutu)
         self.ana_kutu.add(self.ayarlamalar_kutu)
 
-        self.rd_bt_a_kaynak = g.RadioButton.new_with_label_from_widget(
-            None, "açık kaynak")
-        self.rd_bt_k_kaynak = g.RadioButton.new_with_label_from_widget(
-            self.rd_bt_a_kaynak, "kapalı kaynak")
+        """ self.rd_bt_a_kaynak = g.RadioButton.new_with_label_from_widget(
+            None, "açık kaynak") """
+        self.rd_bt_k_kaynak = g.RadioButton(label="kapalı kaynak")
 
         self.rd_bt_y_cuda = g.RadioButton.new_with_label_from_widget(
             None, "cuda olmadan")
@@ -36,7 +35,7 @@ class Ana_Ekran(g.Window):
         self.bt_web = g.Button(label="İnternet adresi")
         self.bt_web.connect("clicked", self.web_fun)
 
-        self.liste = (self.rd_bt_a_kaynak, self.rd_bt_k_kaynak, self.rd_bt_y_cuda,
+        self.liste = (self.rd_bt_k_kaynak, self.rd_bt_y_cuda,
                       self.rd_bt_v_cuda, self.bt_yukle, self.bt_nasil, self.bt_web)
         for ele in self.liste:
             self.secenekler_kutu.pack_start(ele, True, True, 3)
@@ -73,13 +72,15 @@ class Ana_Ekran(g.Window):
         if self.rd_bt_a_kaynak.get_active():
             if self.rd_bt_v_cuda.get_active():
                 yukle(A_CV)
-            else: yukle(A_CY)
+            else:
+                yukle(A_CY)
         else:
             if self.rd_bt_v_cuda.get_active():
                 yukle(K_CV)
-            else: yukle(K_CY)
+            else:
+                yukle(K_CY)
 
-    def nasil_fun(self,widget):
+    def nasil_fun(self, widget):
         uyari("""Nasıl çalışır
         
 - Program sizin yerinize 
@@ -93,19 +94,14 @@ class Ana_Ekran(g.Window):
     -geçiş işlemi ilk olarak ikili moda geçilmesi gerekiyor
 """)
 
-    def web_fun(self,widget):
+    def web_fun(self, widget):
         webbrowser.open("https://github.com/halak0013/Pardus-Debain-driver")
 
-    def nvidia_fun(self,widget):
+    def nvidia_fun(self, widget):
         degistir("nvidia")
 
-    def entegre_fun(self,widget):
+    def entegre_fun(self, widget):
         degistir("integrated")
 
-    def ikisi_fun(self,widget):
+    def ikisi_fun(self, widget):
         degistir("hybrid")
-
-
-
-
-
