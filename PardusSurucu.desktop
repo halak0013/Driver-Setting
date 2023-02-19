@@ -1,0 +1,20 @@
+[Desktop Entry]
+Categories=Utility;GTK;
+Comment[tr_TR]=Pardus için Sürücü yükleme ve ayarlama
+Comment=Pardus için Sürücü yükleme ve ayarlama
+Exec=python3 main.py
+GenericName[tr_TR]=Sürücü ayarları
+GenericName=Sürücü ayarları
+Icon=psy.png
+MimeType=
+Name[tr_TR]=Pardus/Debian Sürücü ayarları
+Name=Pardus/Debian Sürücü ayarları
+Path=
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
+X-DBUS-ServiceName=
+X-DBUS-StartupType=
+X-KDE-SubstituteUID=false
+X-KDE-Username=
