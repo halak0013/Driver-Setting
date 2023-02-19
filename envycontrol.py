@@ -353,7 +353,7 @@ def _rebuild_initramfs():
     else:
         command = []
     if len(command) != 0:
-        fonksiyonlar.uyari('Rebuilding initramfs...')
+        fonksiyonlar.uyari('initramf yeniden inşa ediliyor...')
         p = subprocess.run(command, stdout=subprocess.DEVNULL)
         if p.returncode == 0:
             fonksiyonlar.uyari('initramfs inşası başarılı!')
