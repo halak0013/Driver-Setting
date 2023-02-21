@@ -8,7 +8,7 @@ Linux sistemlerde bazı sürücülerin yüklenmesi normal kullanıcı için zor 
 # kararsız sistemler
 - gnome
 
-* uygulama
+uygulama
 
 ![resim](https://user-images.githubusercontent.com/75750279/219940482-3940d222-7274-499d-b3f8-2aeafd84288a.png)
 ## Nasıl çalışır
