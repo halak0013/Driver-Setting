@@ -1,6 +1,12 @@
 # ŞU AN TEST AŞAMASINDADIR
 # Pardus-Debain-driver
-Linux sistemlerde bazı sürücülerin yüklenmesi normal kullanıcı için zor olduğundan bu işi basitleştirmeye çalıştım inşAllah
+Linux sistemlerde bazı sürücülerin yüklenmesi normal kullanıcı için zor olduğundan bu işi basitleştirmeye çalışıldı inşAllah
+
+## denen ve çalışan sistemler
+- kde
+- xfce
+# kararsız sistemler
+- gnome
 
 * uygulama
 
