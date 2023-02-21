@@ -7,20 +7,37 @@ Linux sistemlerde bazı sürücülerin yüklenmesi normal kullanıcı için zor 
 ![resim](https://user-images.githubusercontent.com/75750279/219940482-3940d222-7274-499d-b3f8-2aeafd84288a.png)
 ## Nasıl çalışır
         
-- Program sizin yerinize 
-    - gerekli nevidia depolarını sisteminize ekleyerek,
-    - gerekli paketleri yükleyerek
-    - giriş ekran ayarlarını yaparak
-    - tema ekleyerek
-    yüklemeyi yapar
-- grafik kartı geçişi envycontrol ile birilkte yapılıyor
-    - envycontrol https://github.com/bayasdev/envycontrol
-    - geçiş işlemi ilk olarak ikili moda geçilmesi gerekiyor
+## program iki kısımdan oluşur
+1-) sürücülerin yüklenmesi.
+
+2-) istenen grafik moduna geçilmesi.
+
+## Uygulamanın çalışma prensibi
+
+### yükleme kısımı için
+- ilk önce sıkıntılı paketleri kaldırır
+- gerekli bazı paketleri yükler
+- nvidia deposunu ekler
+- contrib depo aktifleştirilir
+- depo güncellenir
+- sddm yütlenir
+- sonrasında seçilen moda göre cuda ile veya cudasız yükleme yapılır
+
+### grafik kartı geçiş
+- nvida seçilrse envycontrol ile gerekli ayarlamalar yapılıp sadece nvidianın calışmasını sağlanıyor
+- tümleşik seçilirse sadece tümleşik(işlemci içindeki) birim çalışıyor
+- ikili seçilirse hem nvidia hem de tümleşik birim aktifleşiyor.
+    - bu modda blender ve davinci gibi gpu destekli programlar nvidiayı görebiliyor
+    - ama geri kalan sistem gene tümleşik birimde çalışıyor
+
+
+
+grafik kartı geçişi envycontrol https://github.com/bayasdev/envycontrol değiştirilerek yapılmıştır
 
 ## Çalıştırmak için
 ```python3 main.py```
 * hangi yöntemle yüklme yapcağınızı seçin
-* yüklendikten sonra hangi moda geçmek isterseniz o modu seçemlisiniz
+* yüklendikten sonra hangi moda geçmek isterseniz o modu seçemelisiniz
 ## yükleme yaparken sddm giriş yönetcisini seçmeyi unutmayın. şu anlık sadece sddm için çalışıyor
 
 * nvidianın kendi ayarları
@@ -43,10 +60,16 @@ Linux sistemlerde bazı sürücülerin yüklenmesi normal kullanıcı için zor 
 
 # yedek uyarısı
 !!!!
-!!! Kurulum yapmak isterseniz öncelikle yedek almanızı kesinlikle tavsiye ederim. Herhangi hata çıkınca yardım etmeye çalışırız ancak sorumluluğun sizin üzerinizde olduğunu unutmayın!!!
+
+Kurulum yapmak isterseniz öncelikle yedek almanızı kesinlikle tavsiye ederim. Herhangi hata çıkınca yardım etmeye çalışırız ancak sorumluluğun sizin üzerinizde olduğunu unutmayın
+
 !!!
+
 yedek almak için de mağzadan timeshift programını yükleyerek yapabilirisiniz veya 
-sudo apt install timeshift
+
+```sudo apt install timeshift```
+
+
 ile ukurulum yapabilirsiniz
 
 Eğer herhangi bir hata alırsanız  ekran görüntüsünü issue bölümünde paylaşırsanız yardımcı olmaya çalışırım
