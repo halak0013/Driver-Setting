@@ -61,11 +61,12 @@ exit
     subprocess.Popen(['x-terminal-emulator', '-e',
                       f'bash -c "echo \'{komut}\' > betik.sh && chmod +x betik.sh && ./betik.sh; exec bash"'], cwd="/tmp/")
 
-
+def m_ortami():
+    return os.environ.get('XDG_CURRENT_DESKTOP')
 
 def yukle(tur):
     konum = os.getcwd()
-    masaustu_ortami = os.environ.get('XDG_CURRENT_DESKTOP')
+    masaustu_ortami = m_ortami
     gnome_hata=""
     if masaustu_ortami == "GNOME":
         gnome_hata=f"""
@@ -89,7 +90,6 @@ echo 'deb [signed-by=/usr/share/keyrings/nvidia-drivers.gpg] https://developer.d
 sleep 5
 sudo add-apt-repository contrib
 sudo apt update
-sudo apt install sddm -y
 sleep 5
 """
     if tur == A_CV:
