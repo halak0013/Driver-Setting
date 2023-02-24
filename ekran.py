@@ -67,6 +67,28 @@ class Ana_Ekran(g.Window):
                       self.bt_ikisi, self.kaydirabilir)
         for ele in self.liste:
             self.ayarlamalar_kutu.pack_start(ele, True, True, 3)
+        
+        if m_ortami() == "GNOME":
+            uyari("""
+            Değerli Kullanıcı
+
+            Gnome kullanırken eski grafik birimi kaldırılırken
+            sistem çöktü hatası geliyor çıkış deyip tekrar
+            yükleye basrasanız yüklemeye devam edcektir inşAllah
+            """)
+        uyari("""
+            Değerli Kullanıcı
+
+            Uygulama iki aşamadan oluşur
+            1 yükleme
+            2 grafik birimleri arasında geçiş
+            yükleme direk nividia depolarından yükleniyor. Ve gerekli
+            ayarlar yapılıyor.
+            Grafik birimi arasında geçiş yaparken
+            Nvidia: tüm işlemler nvidia kartında gerçekleşir
+            İksi bir arada: Nvidia ve tümleşik(işlemcideki) birimde gerçekleşir
+            Tümleşik: tüm işlemler sadece tümleşik(işlemcideki) birimde gerçekleşir
+            """)
 
     def yukle_fun(self, widget):
         """ if self.rd_bt_a_kaynak.get_active():
