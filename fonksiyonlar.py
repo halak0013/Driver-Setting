@@ -68,11 +68,11 @@ def yukle(tur):
     masaustu_ortami = os.environ.get('XDG_CURRENT_DESKTOP')
     gnome_hata=""
     if masaustu_ortami == "GNOME":
-        gnome_hata="""
-            sudo rm -f /usr/libexec/gnome-session-failed
-            sudo cp -f {konum}/gnome-session-failed /usr/libexec/
-            sudo chmod +x /usr/libexec/gnome-session-failed
-            """
+        gnome_hata=f"""
+sudo rm -f /usr/libexec/gnome-session-failed
+sudo cp -f {konum}/gnome-session-failed /usr/libexec/
+sudo chmod +x /usr/libexec/gnome-session-failed
+"""
     komut = f"""#!/usr/bin/bash
 echo 'İşlem bittikten sonra bilgisyar yeniden başlatılacaktır'
 echo 'Lütfen açık olan uygulamalarınızı kapatın'
