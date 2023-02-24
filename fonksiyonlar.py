@@ -66,7 +66,7 @@ def m_ortami():
 
 def yukle(tur):
     konum = os.getcwd()
-    masaustu_ortami = m_ortami
+    masaustu_ortami = m_ortami()
     gnome_hata=""
     if masaustu_ortami == "GNOME":
         gnome_hata=f"""
