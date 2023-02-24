@@ -73,6 +73,7 @@ def yukle(tur):
 sudo rm -f /usr/libexec/gnome-session-failed
 sudo cp -f {konum}/gnome-session-failed /usr/libexec/
 sudo chmod +x /usr/libexec/gnome-session-failed
+sudo apt install sddm -y
 """
     komut = f"""#!/usr/bin/bash
 echo 'İşlem bittikten sonra bilgisyar yeniden başlatılacaktır'
