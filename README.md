@@ -5,7 +5,6 @@ Linux sistemlerde bazı sürücülerin yüklenmesi normal kullanıcı için zor 
 ## denen ve çalışan sistemler
 - kde
 - xfce
-# kararsız sistemler
 - gnome
 
 uygulama
@@ -21,12 +20,12 @@ uygulama
 ## Uygulamanın çalışma prensibi
 
 ### yükleme kısımı için
-- ilk önce sıkıntılı paketleri kaldırır
+- ilk önce sistem güncellenir
+- sıkıntılı paketleri kaldırır
 - gerekli bazı paketleri yükler
 - nvidia deposunu ekler
 - contrib depo aktifleştirilir
 - depo güncellenir
-- sddm yütlenir
 - sonrasında seçilen moda göre cuda ile veya cudasız yükleme yapılır
 
 ### grafik kartı geçiş
