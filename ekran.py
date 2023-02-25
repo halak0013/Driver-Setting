@@ -70,12 +70,15 @@ class Ana_Ekran(g.Window):
         
         if m_ortami() == "GNOME":
             uyari("""
-            Değerli Kullanıcı
+Değerli Kullanıcı
+Gnome kullanırken eski grafik birimi kaldırılırken
+sistem çöktü hatası geliyor çıkış deyip tekrar
+yükleye basrasanız yüklemeye devam edcektir inşAllah
 
-            Gnome kullanırken eski grafik birimi kaldırılırken
-            sistem çöktü hatası geliyor çıkış deyip tekrar
-            yükleye basrasanız yüklemeye devam edcektir inşAllah
-            """)
+Yükleme  sırasında gnome'nin giriş ekranı 
+sıkıntı çıkrdığı için Pardusun giriş ekranını
+seçmeniz gerekmektedir -lightdm-
+""")
         uyari("""
             Değerli Kullanıcı
 
