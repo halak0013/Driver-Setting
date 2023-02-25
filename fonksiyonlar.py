@@ -73,14 +73,14 @@ def yukle(tur):
 sudo rm -f /usr/libexec/gnome-session-failed
 sudo cp -f {konum}/gnome-session-failed /usr/libexec/
 sudo chmod +x /usr/libexec/gnome-session-failed
-sudo apt install pardus-lightdm-greeter -y
 """
     komut = f"""#!/usr/bin/bash
 echo 'İşlem bittikten sonra bilgisyar yeniden başlatılacaktır'
 echo 'Lütfen açık olan uygulamalarınızı kapatın'
 echo 'Lütfen şifrenizi giriniz'
-{gnome_hata}
 sudo apt update && sudo apt upgrade -y
+sudo apt install sddm
+{gnome_hata}
 sleep 5
 sudo apt purge nvidia* -y
 sleep 5
