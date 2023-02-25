@@ -72,22 +72,21 @@ class Ana_Ekran(g.Window):
             uyari("""
 Değerli Kullanıcı
 Gnome kullanırken eski grafik birimi kaldırılırken
-sistem çöktü hatası geliyor çıkış deyip tekrar
+Bazen sistem çöktü hatası gelebiliyor çıkış deyip tekrar
 yükleye basrasanız yüklemeye devam edcektir inşAllah
-
-Yükleme  sırasında gnome'nin giriş ekranı 
-sıkıntı çıkrdığı için Pardusun giriş ekranını
-seçmeniz gerekmektedir -lightdm-
 """)
         uyari("""
             Değerli Kullanıcı
-
-            Uygulama iki aşamadan oluşur
             1 yükleme
             2 grafik birimleri arasında geçiş
+            Uyarı!
+            yükleme sırasında sddm giriş ekranı yükleniyor
+            Lütfen sddm'yi sçmeyi unutmayın!
+            Uygulama iki aşamadan oluşur
             yükleme direk nividia depolarından yükleniyor. Ve gerekli
             ayarlar yapılıyor.
-            Grafik birimi arasında geçiş yaparken
+
+            Grafik birimi arasında geçiş yaparken:
             Nvidia: tüm işlemler nvidia kartında gerçekleşir
             İksi bir arada: Nvidia ve tümleşik(işlemcideki) birimde gerçekleşir
             Tümleşik: tüm işlemler sadece tümleşik(işlemcideki) birimde gerçekleşir
@@ -112,11 +111,11 @@ seçmeniz gerekmektedir -lightdm-
     - gerekli nevidia depolarını sisteminize ekleyerek,
     - gerekli paketleri yükleyerek
     - giriş ekran ayarlarını yaparak
-    - tema ekleyerek
     yüklemeyi yapar
 - grafik kartı geçişi envycontrol ile birilkte yapılıyor
+    - nvidia modu 
     - envycontrol https://github.com/bayasdev/envycontrol
-    -geçiş işlemi ilk olarak ikili moda geçilmesi gerekiyor
+    - geçiş işlemi ilk olarak ikili moda geçilmesi gerekiyor
 """)
 
     def web_fun(self, widget):
