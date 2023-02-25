@@ -17,6 +17,16 @@ uygulama
 
 2-) istenen grafik moduna geçilmesi.
 
+## Çalıştırmak için
+- yapılması gerekenler
+- program indermek ve klasörün  içinde terminal açıp 
+- `python3 main.py` ile uygulama çalıştırılır.
+- yükleye basılır
+- gelen ekranda şifre girilir
+- sddm için tamama basıp sddm seçilir
+- son gelen novue... sürücüsü için uyarısan tamam denir
+- sonrasında bilgisayar yeniden başlıyor.
+
 ## Uygulamanın çalışma prensibi
 
 ### yükleme kısımı için
@@ -39,11 +49,9 @@ uygulama
 
 grafik kartı geçişi envycontrol https://github.com/bayasdev/envycontrol değiştirilerek yapılmıştır
 
-## Çalıştırmak için
-```python3 main.py```
-* hangi yöntemle yüklme yapcağınızı seçin
-* yüklendikten sonra hangi moda geçmek isterseniz o modu seçemelisiniz
-## yükleme yaparken sddm giriş yönetcisini seçmeyi unutmayın. şu anlık sadece sddm için çalışıyor
+
+
+istediğiniz moda tekar uygulamaya girip seçebilirsiniz
 
 * nvidianın kendi ayarları
 
