@@ -79,7 +79,7 @@ echo 'İşlem bittikten sonra bilgisyar yeniden başlatılacaktır'
 echo 'Lütfen açık olan uygulamalarınızı kapatın'
 echo 'Lütfen şifrenizi giriniz'
 sudo apt update && sudo apt upgrade -y
-sudo apt install sddm
+sudo apt install sddm -y
 {gnome_hata}
 sleep 5
 sudo apt purge nvidia* -y
