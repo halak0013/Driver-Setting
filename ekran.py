@@ -74,6 +74,9 @@ Değerli Kullanıcı
 Gnome kullanırken eski grafik birimi kaldırılırken
 Bazen sistem çöktü hatası gelebiliyor çıkış deyip tekrar
 yükleye basrasanız yüklemeye devam edcektir inşAllah
+
+Ek olarak yüklendikten yeniden başlatınca 
+girişten wyland olmayan gnomu seçmeniz gerekmektedir
 """)
         uyari("""
             Değerli Kullanıcı
