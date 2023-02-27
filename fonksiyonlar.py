@@ -53,7 +53,7 @@ def degistir(mode):
     konum = os.getcwd()
     if goruntu_yoneticisi == "sddm":
         ekle = "--dm sddm"
-    komut = f"""#!/usr/bin/bash
+    komut = f"""#!/bin/bash
 echo 'Lütfen şifrenizi giriniz'
 sudo python3 {konum}/envycontrol.py -s {mode} {ekle}
 exit
@@ -74,7 +74,7 @@ sudo rm -f /usr/libexec/gnome-session-failed
 sudo cp -f {konum}/gnome-session-failed /usr/libexec/
 sudo chmod +x /usr/libexec/gnome-session-failed
 """
-    komut = f"""#!/usr/bin/bash
+    komut = f"""#!/bin/bash
 echo 'İşlem bittikten sonra bilgisyar yeniden başlatılacaktır'
 echo 'Lütfen açık olan uygulamalarınızı kapatın'
 echo 'Lütfen şifrenizi giriniz'
