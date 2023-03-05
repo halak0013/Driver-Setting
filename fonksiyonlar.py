@@ -13,6 +13,21 @@ K_CV = 2
 K_CY = 3
 
 
+def cihazlariGetir():
+    # xrandr çıktısını alın
+    xrandr_output = subprocess.check_output(['xrandr']).decode('utf-8')
+
+    # Satırları listeye ayırın
+    lines = xrandr_output.strip().split('\n')
+
+    # Satırların her birini işleyin ve cihaz isimlerini bir listeye ekleyin
+    devices = []
+    for line in lines:
+        if ' connected ' in line:
+            device_name = line.split()[0]
+            devices.append(device_name)
+    return devices
+
 def sorgu(metin):
     dialog = g.Dialog(title="Uyarı!", parent=None, flags=0)
     dialog.add_button("Evet", g.ResponseType.YES)

@@ -12,6 +12,8 @@ class Ana_Ekran(g.Window):
         self.ana_kutu = g.HBox(spacing=6)
         self.secenekler_kutu = g.VBox(spacing=6)
         self.ayarlamalar_kutu = g.VBox(spacing=6)
+        self.parlaklik_kutu = g.HBox(spacing=6)
+
 
         self.add(self.ana_kutu)
         self.ana_kutu.add(self.secenekler_kutu)
@@ -55,6 +57,16 @@ class Ana_Ekran(g.Window):
         self.bt_ikisi = g.Button(label="İkisi bir arada")
         self.bt_ikisi.connect("clicked", self.ikisi_fun)
 
+
+        self.rbt_list=[]
+        for bt in cihazlariGetir():
+            self.rbt_list.append(g.CheckButton.new_with_label(bt))
+            self.parlaklik_kutu.pack_start(self.rbt_list[-1], True, True, 3)
+        
+        self.scl_seviye=g.Scale.new_with_range(g.Orientation.HORIZONTAL,0,1.0,0.05)
+        self.scl_seviye.connect("value-changed", self.on_scl_degis)
+
+
         self.lb_cikti = g.Label("İşlem çıktıları burada gözükür")
 
         self.kaydirabilir = g.ScrolledWindow()
@@ -63,8 +75,8 @@ class Ana_Ekran(g.Window):
         self.kaydirabilir.set_size_request(200, 100)
         self.kaydirabilir.add(self.lb_cikti)
 
-        self.liste = (self.lb_turu, self.kutu_grafik,
-                      self.bt_ikisi, self.kaydirabilir)
+        self.liste = (self.lb_turu, self.kutu_grafik, 
+                      self.bt_ikisi,self.parlaklik_kutu,self.scl_seviye, self.kaydirabilir)
         for ele in self.liste:
             self.ayarlamalar_kutu.pack_start(ele, True, True, 3)
         
@@ -132,3 +144,11 @@ girişten wyland olmayan gnomu seçmeniz gerekmektedir
 
     def ikisi_fun(self, widget):
         degistir("hybrid")
+
+    def on_scl_degis(self,widget):
+        for p in self.rbt_list:
+            if p.get_active():
+                komut=f"xrandr --output {p.get_label()} --brightness {widget.get_value()}"
+                #print(komut)
+                subprocess.run(komut.split(), check=True)
+
