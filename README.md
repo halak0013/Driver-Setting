@@ -1,4 +1,4 @@
-# Pardus-Debain-driver
+# Sürücü Ayarları
 Linux sistemlerde bazı sürücülerin yüklenmesi normal kullanıcı için zor olduğundan bu işi basitleştirmeye çalışıldı inşAllah
 
 ## denen ve çalışan sistemler

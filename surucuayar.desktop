@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Sürücü Ayarı
+Comment= Sürücüleri yüklemenizde yardımcı olur inşAllah
+Exec=sh -c "python3 /opt/surucu-ayar/main.py"
+Icon=psy.png
+Terminal=false
+Type=Application
+Categories=Utility
+StartupNotify=false
