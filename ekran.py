@@ -8,7 +8,7 @@ gi.require_version("Gtk", "3.0")
 
 class Ana_Ekran(g.Window):
     def __init__(self):
-        g.Window.__init__(self, title="Pardus Sürücü Ayarları")
+        g.Window.__init__(self, title="Sürücü Ayarları")
         self.ana_kutu = g.HBox(spacing=6)
         self.secenekler_kutu = g.VBox(spacing=6)
         self.ayarlamalar_kutu = g.VBox(spacing=6)
@@ -135,7 +135,7 @@ girişten wyland olmayan gnomu seçmeniz gerekmektedir
 """)
 
     def web_fun(self, widget):
-        webbrowser.open("https://github.com/halak0013/Pardus-Debain-driver")
+        webbrowser.open("https://github.com/halak0013/Driver-Setting")
 
     def nvidia_fun(self, widget):
         degistir("nvidia")
