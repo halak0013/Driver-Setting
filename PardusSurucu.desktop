@@ -1,8 +1,9 @@
 [Desktop Entry]
 Categories=Utility;GTK;
+Encoding=UTF-8
 Comment[tr_TR]=Pardus için Sürücü yükleme ve ayarlama
 Comment=Pardus için Sürücü yükleme ve ayarlama
-Exec=python3 main.py
+Exec=sh -c "python3 /opt/Pardus_Debian_surucu_ayar/main.py"
 GenericName[tr_TR]=Sürücü ayarları
 GenericName=Sürücü ayarları
 Icon=psy.png
