@@ -1,4 +1,3 @@
-# ŞU AN TEST AŞAMASINDADIR
 # Pardus-Debain-driver
 Linux sistemlerde bazı sürücülerin yüklenmesi normal kullanıcı için zor olduğundan bu işi basitleştirmeye çalışıldı inşAllah
 
