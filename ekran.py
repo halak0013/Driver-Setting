@@ -64,6 +64,7 @@ class Ana_Ekran(g.Window):
             self.parlaklik_kutu.pack_start(self.rbt_list[-1], True, True, 3)
         
         self.scl_seviye=g.Scale.new_with_range(g.Orientation.HORIZONTAL,0,1.0,0.05)
+        self.scl_seviye.set_value(1)
         self.scl_seviye.connect("value-changed", self.on_scl_degis)
 
 
