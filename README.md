@@ -8,7 +8,8 @@ Linux sistemlerde bazı sürücülerin yüklenmesi normal kullanıcı için zor 
 
 uygulama
 
-![resim](https://user-images.githubusercontent.com/75750279/219940482-3940d222-7274-499d-b3f8-2aeafd84288a.png)
+![resim](https://user-images.githubusercontent.com/75750279/223205161-4fff3517-bc09-45ec-9947-1ce4015f4f66.png)
+
 ## Nasıl çalışır
         
 ## program iki kısımdan oluşur
@@ -16,8 +17,9 @@ uygulama
 
 2-) istenen grafik moduna geçilmesi.
 
+3-) ekranların parlaklıklarını değiştirme(şimdilik yeniden başlatınca eski haline geliyor)
+
 ## Çalıştırmak için
-- yapılması gerekenler
 - program indermek ve klasörün  içinde terminal açıp 
 - `python3 main.py` ile uygulama çalıştırılır.
 - yükleye basılır
