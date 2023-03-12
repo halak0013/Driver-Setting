@@ -1,3 +1,4 @@
+from envycontrol import *
 import os
 import subprocess
 
@@ -5,7 +6,6 @@ import gi
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk as g
 
-from envycontrol import *
 
 A_CV = 0
 A_CY = 1
@@ -27,6 +27,7 @@ def get_devices():
             device_name = line.split()[0]
             devices.append(device_name)
     return devices
+
 
 def query(text):
     dialog = g.Dialog(title="Uyarı!", parent=None, flags=0)
@@ -65,7 +66,7 @@ def change(mode):
     # switcher(mode)
     print(display_manager)
     add = ""
-    location = os.getcwd()
+    location = getLocation()
     if display_manager == "sddm":
         add = "--dm sddm"
     cmd = f"""#!/bin/bash
@@ -76,15 +77,18 @@ exit
     subprocess.Popen(['x-terminal-emulator', '-e',
                       f'bash -c "echo \'{cmd}\' > betik.sh && chmod +x betik.sh && ./betik.sh; exec bash"'], cwd="/tmp/")
 
+
 def get_display_m():
     return os.environ.get('XDG_CURRENT_DESKTOP')
 
+
 def install(type):
-    location = os.getcwd()
+    location = getLocation()
+    print(location)
     display_managet = get_display_m()
-    gnome_error=""
+    gnome_error = ""
     if display_managet == "GNOME":
-        gnome_error=f"""
+        gnome_error = f"""
 sudo rm -f /usr/libexec/gnome-session-failed
 sudo cp -f {location}/gnome-session-failed /usr/libexec/
 sudo chmod +x /usr/libexec/gnome-session-failed
@@ -116,7 +120,19 @@ sleep 5
         cmd += "sudo apt install nvidia-driver cuda nvidia-smi nvidia-settings -y"
     else:
         cmd += "sudo apt install nvidia-driver nvidia-smi nvidia-settings -y"
-    cmd+="\nsudo apt purge xserver-xorg-video-nouveau -y \nsleep 5\nsudo reboot"
+    cmd += "\nsudo apt purge xserver-xorg-video-nouveau -y \nsleep 5\nsudo reboot"
     print(cmd)
     subprocess.Popen(['x-terminal-emulator', '-e',
                      f'bash -c "echo \'{cmd}\' > betik.sh && chmod +x betik.sh && ./betik.sh; exec bash"'], cwd="/tmp/")
+
+
+def change_brightness(window, val):
+    cmd = f"xrandr --output {window} --brightness {val}"
+    subprocess.run(cmd.split(), check=True)
+
+
+def getLocation():
+    if os.path.exists("/opt/surucu-ayar/envycontrol.py"):
+        return "/opt/surucu-ayar/envycontrol.py"
+    else:
+        return os.getcwd()
