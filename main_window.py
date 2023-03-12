@@ -9,6 +9,10 @@ gi.require_version("Gtk", "3.0")
 class Main_Window(g.Window):
     def __init__(self):
         g.Window.__init__(self, title="Sürücü Ayarları")
+        self.set_position(g.WindowPosition.CENTER)
+        # Gtk.StatusIcon oluşturarak uygulama simgesini panelde göster
+        icon = g.Image.new_from_file("/usr/share/icons/psy.png")
+        self.set_icon(icon.get_pixbuf())
         self.bx_main = g.HBox(spacing=6)
         self.bx_options = g.VBox(spacing=6)
         self.bx_setting = g.VBox(spacing=6)
@@ -19,6 +23,7 @@ class Main_Window(g.Window):
         self.bx_main.add(self.bx_options)
         self.bx_main.add(self.bx_setting)
 
+        #? intalling properties
         """ self.rd_bt_a_kaynak = g.RadioButton.new_with_label_from_widget(
             None, "açık kaynak") """
         self.rd_bt_p_source = g.RadioButton(label="kapalı kaynak")
@@ -42,6 +47,7 @@ class Main_Window(g.Window):
         for ele in self.list_:
             self.bx_options.pack_start(ele, True, True, 3)
 
+        #? setting properties
         self.lb_type = g.Label("Grafik birimi")
         self.bx_graphic = g.HBox(spacing=0)
 
@@ -81,6 +87,7 @@ class Main_Window(g.Window):
         for ele in self.list_:
             self.bx_setting.pack_start(ele, True, True, 3)
         
+        #? Gnome alert
         if get_display_m() == "GNOME":
             warning("""
 Değerli Kullanıcı
@@ -91,6 +98,7 @@ yükleye basrasanız yüklemeye devam edcektir inşAllah
 Ek olarak yüklendikten yeniden başlatınca 
 girişten wyland olmayan gnomu seçmeniz gerekmektedir
 """)
+        #? login alert
         warning("""
             Değerli Kullanıcı
             1 yükleme
@@ -124,14 +132,22 @@ girişten wyland olmayan gnomu seçmeniz gerekmektedir
         warning("""Nasıl çalışır
         
 - Program sizin yerinize 
+
     - gerekli nevidia depolarını sisteminize ekleyerek,
     - gerekli paketleri yükleyerek
     - giriş ekran ayarlarını yaparak
     yüklemeyi yapar
+
+- kipler arası geçiş
+
+    - nvidia seçilirse envycontrol ile gerekli ayarlamalar yapılıp sadece nvidianın calışmasını sağlanıyor
+    - tümleşik seçilirse sadece tümleşik(işlemci içindeki) birim çalışıyor
+    - ikili seçilirse hem nvidia hem de tümleşik birim aktifleşiyor
+        - bu kipte blender ve davinci gibi gpu destekli programlar nvidiayı görebiliyor
+        - ama geri kalan sistem gene tümleşik birimde çalışıyor
+
 - grafik kartı geçişi envycontrol ile birilkte yapılıyor
-    - nvidia modu 
     - envycontrol https://github.com/bayasdev/envycontrol
-    - geçiş işlemi ilk olarak ikili moda geçilmesi gerekiyor
 """)
 
     def web_fun(self, widget):

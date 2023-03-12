@@ -12,7 +12,7 @@ A_CY = 1
 K_CV = 2
 K_CY = 3
 
-
+#? getting screen name
 def get_devices():
     # xrandr çıktısını alın
     xrandr_output = subprocess.check_output(['xrandr']).decode('utf-8')
@@ -28,7 +28,7 @@ def get_devices():
             devices.append(device_name)
     return devices
 
-
+#? setting alert
 def query(text):
     dialog = g.Dialog(title="Uyarı!", parent=None, flags=0)
     dialog.add_button("Evet", g.ResponseType.YES)
@@ -51,16 +51,17 @@ def query(text):
         dialog.destroy()
         return 'hayır'
 
-
+#? alert dialog
 def warning(text):
     dialog = g.MessageDialog(flags=0,
                              message_type=g.MessageType.INFO,
                              buttons=g.ButtonsType.OK)
+    dialog.set_icon_from_file("/usr/share/icons/psy.png")
     dialog.format_secondary_text(text)
     dialog.run()
     dialog.destroy()
 
-
+#? changing gpu mode
 def change(mode):
     display_manager = check_display_manager()
     # switcher(mode)
@@ -81,7 +82,7 @@ exit
 def get_display_m():
     return os.environ.get('XDG_CURRENT_DESKTOP')
 
-
+#? installing nvidia driver
 def install(type):
     location = getLocation()
     print(location)
