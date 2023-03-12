@@ -1,6 +1,7 @@
 # Driver Settings
 Since it is difficult for normal users to install some drivers on Linux systems, we tried to simplify this task, insha'Allah.
 
+[Türkçe için](https://github.com/halak0013/Driver-Setting/blob/ana/READMETR.md)
 ## called and working systems
 - kde
 - xfce
