@@ -1,90 +1,89 @@
-# Sürücü Ayarları
-Linux sistemlerde bazı sürücülerin yüklenmesi normal kullanıcı için zor olduğundan bu işi basitleştirmeye çalışıldı inşAllah
+# Driver Settings
+Since it is difficult for normal users to install some drivers on Linux systems, we tried to simplify this task, insha'Allah.
 
-## denen ve çalışan sistemler
+## called and working systems
 - kde
 - xfce
 - gnome
 
-uygulama
+APPLICATION
 
-![resim](https://user-images.githubusercontent.com/75750279/223205161-4fff3517-bc09-45ec-9947-1ce4015f4f66.png)
+![image](https://user-images.githubusercontent.com/75750279/223205161-4fff3517-bc09-45ec-9947-1ce4015f4f66.png)
 
-## Nasıl çalışır
+## How does it work
         
-## program iki kısımdan oluşur
-1-) sürücülerin yüklenmesi.
+## the program consists of two parts
+1-) installing drivers.
 
-2-) istenen grafik moduna geçilmesi.
+2-) switching to the desired graphic mode.
 
-3-) ekranların parlaklıklarını değiştirme(şimdilik yeniden başlatınca eski haline geliyor)
+3-) changing the brightness of the screens (for now, it goes back to when you restart)
 
-## Çalıştırmak için
-- program indermek ve klasörün  içinde terminal açıp 
-- `python3 main.py` ile uygulama çalıştırılır.
-- yükleye basılır
-- gelen ekranda şifre girilir
-- sddm için tamama basıp sddm seçilir
-- son gelen novue... sürücüsü için uyarısan tamam denir
-- sonrasında bilgisayar yeniden başlıyor.
+## To make it work
+- download the program and open the terminal inside the folder
+- Run the application with `python3 main.py`.
+- press download
+- enter the password on the screen
+- For sddm press ok and select sddm
+- OK if you warn for the latest novue... driver
+- then the computer restarts.
 
-## Uygulamanın çalışma prensibi
+## Working principle of the app
 
-### yükleme kısımı için
-- ilk önce sistem güncellenir
-- sıkıntılı paketleri kaldırır
-- gerekli bazı paketleri yükler
-- nvidia deposunu ekler
-- contrib depo aktifleştirilir
-- depo güncellenir
-- sonrasında seçilen moda göre cuda ile veya cudasız yükleme yapılır
+### for the loading part
+- first the system is updated
+- removes troublesome packages
+- installs some required packages
+- Adds nvidia repository
+- the contrib repository is activated
+- repository is updated
+- Afterwards, according to the selected mode, it is loaded with or without cuda.
 
-### grafik kartı geçiş
-- nvida seçilrse envycontrol ile gerekli ayarlamalar yapılıp sadece nvidianın calışmasını sağlanıyor
-- tümleşik seçilirse sadece tümleşik(işlemci içindeki) birim çalışıyor
-- ikili seçilirse hem nvidia hem de tümleşik birim aktifleşiyor.
-    - bu modda blender ve davinci gibi gpu destekli programlar nvidiayı görebiliyor
-    - ama geri kalan sistem gene tümleşik birimde çalışıyor
-
-
-
-grafik kartı geçişi envycontrol https://github.com/bayasdev/envycontrol değiştirilerek yapılmıştır
+### graphics card switch
+- If nvida is selected, necessary adjustments are made with envycontrol and only nvidia works.
+- if integrated is selected, only the integrated (in-processor) unit is running
+- if binary is selected, both nvidia and integrated unit are activated.
+     - in this mode, gpu supported programs such as blender and davinci can see nvidia
+     - but the rest of the system still works on the integrated unit
 
 
 
-istediğiniz moda tekar uygulamaya girip seçebilirsiniz
+graphics card migration done by replacing envycontrol https://github.com/bayasdev/envycontrol
 
-* nvidianın kendi ayarları
 
-![resim](https://user-images.githubusercontent.com/75750279/204157502-05292255-1531-4a23-9de7-61324af6ec66.png)
-![resim](https://user-images.githubusercontent.com/75750279/219940580-c8e98dbd-774d-4101-b8a4-4a0471052b36.png)
+
+You can choose the mode you want by entering the application again.
+
+* nvidia's own settings
+
+![image](https://user-images.githubusercontent.com/75750279/204157502-05292255-1531-4a23-9de7-61324af6ec66.png)
+![image](https://user-images.githubusercontent.com/75750279/219940580-c8e98dbd-774d-4101-b8a4-4a0471052b36.png)
 
 
 * davinci 18
 
-![resim](https://user-images.githubusercontent.com/75750279/204157510-0e4e7794-5c6d-4c06-b658-ad86de31d943.png)
+![image](https://user-images.githubusercontent.com/75750279/204157510-0e4e7794-5c6d-4c06-b658-ad86de31d943.png)
 
-* blender ve nvidia-smi
+* blender and nvidia-smi
 
-![resim](https://user-images.githubusercontent.com/75750279/204157524-af44fa06-ddad-4c72-bd51-03e22a9f4d81.png)
+![image](https://user-images.githubusercontent.com/75750279/204157524-af44fa06-ddad-4c72-bd51-03e22a9f4d81.png)
 
-* Pardus hakkında ve neofetch
+* About Pardus and neofetch
 
-![resim](https://user-images.githubusercontent.com/75750279/204157534-4795b2eb-abd4-4ca7-becf-fb048be516f5.png)
+![image](https://user-images.githubusercontent.com/75750279/204157534-4795b2eb-abd4-4ca7-becf-fb048be516f5.png)
 
-# yedek uyarısı
+# backup alert
 !!!!
 
-Kurulum yapmak isterseniz öncelikle yedek almanızı kesinlikle tavsiye ederim. Herhangi hata çıkınca yardım etmeye çalışırız ancak sorumluluğun sizin üzerinizde olduğunu unutmayın
+If you want to install, I highly recommend that you make a backup first. We will try to help if any errors occur, but remember that you are responsible.
 
 !!!
 
-yedek almak için de mağzadan timeshift programını yükleyerek yapabilirisiniz veya 
+To get a backup, you can download the timeshift program from the store or
 
 ```sudo apt install timeshift```
 
 
-ile ukurulum yapabilirsiniz
+You can install with
 
-Eğer herhangi bir hata alırsanız  ekran görüntüsünü issue bölümünde paylaşırsanız yardımcı olmaya çalışırım
-Şimdiden hayırlı olsun
+If you get any error, share the screenshot in the issue section and I will try to help.
