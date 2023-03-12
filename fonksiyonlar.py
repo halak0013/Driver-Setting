@@ -68,6 +68,7 @@ def change(mode):
     print(display_manager)
     add = ""
     location = getLocation()
+    print(location)
     if display_manager == "sddm":
         add = "--dm sddm"
     cmd = f"""#!/bin/bash
@@ -75,6 +76,7 @@ echo 'Lütfen şifrenizi giriniz'
 sudo python3 {location}/envycontrol.py -s {mode} {add}
 exit
 """
+    print(cmd)
     subprocess.Popen(['x-terminal-emulator', '-e',
                       f'bash -c "echo \'{cmd}\' > betik.sh && chmod +x betik.sh && ./betik.sh; exec bash"'], cwd="/tmp/")
 
@@ -134,6 +136,6 @@ def change_brightness(window, val):
 
 def getLocation():
     if os.path.exists("/opt/surucu-ayar/envycontrol.py"):
-        return "/opt/surucu-ayar/envycontrol.py"
+        return "/opt/surucu-ayar"
     else:
         return os.getcwd()
