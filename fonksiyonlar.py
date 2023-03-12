@@ -13,7 +13,7 @@ K_CV = 2
 K_CY = 3
 
 
-def cihazlariGetir():
+def get_devices():
     # xrandr çıktısını alın
     xrandr_output = subprocess.check_output(['xrandr']).decode('utf-8')
 
@@ -28,13 +28,13 @@ def cihazlariGetir():
             devices.append(device_name)
     return devices
 
-def sorgu(metin):
+def query(text):
     dialog = g.Dialog(title="Uyarı!", parent=None, flags=0)
     dialog.add_button("Evet", g.ResponseType.YES)
     dialog.add_button("Hayır", g.ResponseType.NO)
     label = g.Label()
     label.set_text(f"""
-    {metin}
+    {text}
     """)
 
     box = dialog.get_content_area()
@@ -51,51 +51,51 @@ def sorgu(metin):
         return 'hayır'
 
 
-def uyari(metin):
+def warning(text):
     dialog = g.MessageDialog(flags=0,
                              message_type=g.MessageType.INFO,
                              buttons=g.ButtonsType.OK)
-    dialog.format_secondary_text(metin)
+    dialog.format_secondary_text(text)
     dialog.run()
     dialog.destroy()
 
 
-def degistir(mode):
-    goruntu_yoneticisi = check_display_manager()
+def change(mode):
+    display_manager = check_display_manager()
     # switcher(mode)
-    print(goruntu_yoneticisi)
-    ekle = ""
-    konum = os.getcwd()
-    if goruntu_yoneticisi == "sddm":
-        ekle = "--dm sddm"
-    komut = f"""#!/bin/bash
+    print(display_manager)
+    add = ""
+    location = os.getcwd()
+    if display_manager == "sddm":
+        add = "--dm sddm"
+    cmd = f"""#!/bin/bash
 echo 'Lütfen şifrenizi giriniz'
-sudo python3 {konum}/envycontrol.py -s {mode} {ekle}
+sudo python3 {location}/envycontrol.py -s {mode} {add}
 exit
 """
     subprocess.Popen(['x-terminal-emulator', '-e',
-                      f'bash -c "echo \'{komut}\' > betik.sh && chmod +x betik.sh && ./betik.sh; exec bash"'], cwd="/tmp/")
+                      f'bash -c "echo \'{cmd}\' > betik.sh && chmod +x betik.sh && ./betik.sh; exec bash"'], cwd="/tmp/")
 
-def m_ortami():
+def get_display_m():
     return os.environ.get('XDG_CURRENT_DESKTOP')
 
-def yukle(tur):
-    konum = os.getcwd()
-    masaustu_ortami = m_ortami()
-    gnome_hata=""
-    if masaustu_ortami == "GNOME":
-        gnome_hata=f"""
+def install(type):
+    location = os.getcwd()
+    display_managet = get_display_m()
+    gnome_error=""
+    if display_managet == "GNOME":
+        gnome_error=f"""
 sudo rm -f /usr/libexec/gnome-session-failed
-sudo cp -f {konum}/gnome-session-failed /usr/libexec/
+sudo cp -f {location}/gnome-session-failed /usr/libexec/
 sudo chmod +x /usr/libexec/gnome-session-failed
 """
-    komut = f"""#!/bin/bash
+    cmd = f"""#!/bin/bash
 echo 'İşlem bittikten sonra bilgisyar yeniden başlatılacaktır'
 echo 'Lütfen açık olan uygulamalarınızı kapatın'
 echo 'Lütfen şifrenizi giriniz'
 sudo apt update && sudo apt upgrade -y
 sudo apt install sddm -y
-{gnome_hata}
+{gnome_error}
 sleep 5
 sudo apt purge nvidia* -y
 sleep 5
@@ -108,15 +108,15 @@ sudo add-apt-repository contrib
 sudo apt update
 sleep 5
 """
-    if tur == A_CV:
-        komut += "sudo apt install nvidia-driver cuda nvidia-kernel-open-dkms nvidia-smi nvidia-settings -y"
-    elif tur == A_CY:
-        komut += "sudo apt install nvidia-driver nvidia-kernel-open-dkms nvidia-smi nvidia-settings -y"
-    elif tur == K_CV:
-        komut += "sudo apt install nvidia-driver cuda nvidia-smi nvidia-settings -y"
+    if type == A_CV:
+        cmd += "sudo apt install nvidia-driver cuda nvidia-kernel-open-dkms nvidia-smi nvidia-settings -y"
+    elif type == A_CY:
+        cmd += "sudo apt install nvidia-driver nvidia-kernel-open-dkms nvidia-smi nvidia-settings -y"
+    elif type == K_CV:
+        cmd += "sudo apt install nvidia-driver cuda nvidia-smi nvidia-settings -y"
     else:
-        komut += "sudo apt install nvidia-driver nvidia-smi nvidia-settings -y"
-    komut+="\nsudo apt purge xserver-xorg-video-nouveau -y \nsleep 5\nsudo reboot"
-    print(komut)
+        cmd += "sudo apt install nvidia-driver nvidia-smi nvidia-settings -y"
+    cmd+="\nsudo apt purge xserver-xorg-video-nouveau -y \nsleep 5\nsudo reboot"
+    print(cmd)
     subprocess.Popen(['x-terminal-emulator', '-e',
-                     f'bash -c "echo \'{komut}\' > betik.sh && chmod +x betik.sh && ./betik.sh; exec bash"'], cwd="/tmp/")
+                     f'bash -c "echo \'{cmd}\' > betik.sh && chmod +x betik.sh && ./betik.sh; exec bash"'], cwd="/tmp/")
