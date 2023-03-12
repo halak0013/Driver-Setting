@@ -9,7 +9,7 @@ Since it is difficult for normal users to install some drivers on Linux systems,
 
 APPLICATION
 
-![image](https://user-images.githubusercontent.com/75750279/223205161-4fff3517-bc09-45ec-9947-1ce4015f4f66.png)
+![resim](https://user-images.githubusercontent.com/75750279/224530171-41b064f2-ed3e-4fde-9a63-f8e851380a7c.png)
 
 ## How does it work
         

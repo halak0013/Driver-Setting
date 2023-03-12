@@ -1,14 +1,14 @@
 # Sürücü Ayarları
 Linux sistemlerde bazı sürücülerin yüklenmesi normal kullanıcı için zor olduğundan bu işi basitleştirmeye çalışıldı inşAllah
 
-## denen ve çalışan sistemler
+## Denen ve çalışan sistemler
 - kde
 - xfce
 - gnome
 
-uygulama
+Uygulama
 
-![resim](https://user-images.githubusercontent.com/75750279/223205161-4fff3517-bc09-45ec-9947-1ce4015f4f66.png)
+![resim](https://user-images.githubusercontent.com/75750279/224530171-41b064f2-ed3e-4fde-9a63-f8e851380a7c.png)
 
 ## Nasıl çalışır
         
