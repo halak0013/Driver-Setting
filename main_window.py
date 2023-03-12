@@ -149,7 +149,5 @@ girişten wyland olmayan gnomu seçmeniz gerekmektedir
     def on_scl_brigh_change(self,widget):
         for p in self.rbt_list:
             if p.get_active():
-                cmd=f"xrandr --output {p.get_label()} --brightness {widget.get_value()}"
-                #print(komut)
-                subprocess.run(cmd.split(), check=True)
+                change_brightness(p.get_label(),widget.get_value())
 
