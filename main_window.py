@@ -1,6 +1,7 @@
 # Bismillahirrahmanirrahim
 import webbrowser
 from fonksiyonlar import *
+import os
 from gi.repository import Gtk as g, Gdk
 import gi
 gi.require_version("Gtk", "3.0")
@@ -11,7 +12,8 @@ class Main_Window(g.Window):
         g.Window.__init__(self, title="Sürücü Ayarları")
         self.set_position(g.WindowPosition.CENTER)
         # Gtk.StatusIcon oluşturarak uygulama simgesini panelde göster
-        icon = g.Image.new_from_file("/usr/share/icons/psy.png")
+        icon_location="/usr/share/icons" if getLocation() else os.getcwd()
+        icon = g.Image.new_from_file(f"{icon_location}/psy.png")
         self.set_icon(icon.get_pixbuf())
         self.bx_main = g.HBox(spacing=6)
         self.bx_options = g.VBox(spacing=6)

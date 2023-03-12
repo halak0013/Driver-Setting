@@ -56,7 +56,8 @@ def warning(text):
     dialog = g.MessageDialog(flags=0,
                              message_type=g.MessageType.INFO,
                              buttons=g.ButtonsType.OK)
-    dialog.set_icon_from_file("/usr/share/icons/psy.png")
+    icon_location="/usr/share/icons" if getLocation() else os.getcwd()
+    dialog.set_icon_from_file(f"{icon_location}/psy.png")
     dialog.format_secondary_text(text)
     dialog.run()
     dialog.destroy()
@@ -67,7 +68,7 @@ def change(mode):
     # switcher(mode)
     print(display_manager)
     add = ""
-    location = getLocation()
+    location ="/opt/surucu-ayar" if getLocation() else os.getcwd()
     print(location)
     if display_manager == "sddm":
         add = "--dm sddm"
@@ -86,7 +87,7 @@ def get_display_m():
 
 #? installing nvidia driver
 def install(type):
-    location = getLocation()
+    location = "/opt/surucu-ayar" if getLocation() else os.getcwd()
     print(location)
     display_managet = get_display_m()
     gnome_error = ""
@@ -136,6 +137,6 @@ def change_brightness(window, val):
 
 def getLocation():
     if os.path.exists("/opt/surucu-ayar/envycontrol.py"):
-        return "/opt/surucu-ayar"
+        return True
     else:
-        return os.getcwd()
+        return False
