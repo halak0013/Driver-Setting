@@ -5,7 +5,5 @@ Maintainer: Muhammet Halak <zumruduanka0013@gmail.com>
 Build-Depends: debhelper (>= 10), python3, python3-pip
 Architecture: all
 Standards-Version: 4.3.0
-
 Homepage: https://github.com/halak0013/Driver-Setting
-
 Description:  Bu uygulama şu anlık gerekli nvidia sürücülerini  Yükleyip işlemci ve nvidia kart arasında geçişi sağlar
