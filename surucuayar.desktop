@@ -1,10 +1,17 @@
 [Desktop Entry]
+Categories=Utility
+Comment[tr_TR]=Sürücüleri yüklemenizde yardımcı olur inşAllah
+Comment=Sürücüleri yüklemenizde yardımcı olur inşAllah
 Encoding=UTF-8
-Name=Sürücü Ayarı
-Comment= Sürücüleri yüklemenizde yardımcı olur inşAllah
-Exec=sh -c "python3 /opt/surucu-ayar/main.py"
+Exec=driver-setting
+GenericName[tr_TR]=Sürücü Ayarı
+GenericName=Driver Setting
 Icon=psy.png
+MimeType=
+Name[tr_TR]=Sürücü Ayarı
+Name=Driver Setting
+Path=
+StartupNotify=false
 Terminal=false
 Type=Application
-Categories=Utility
-StartupNotify=false
+X-KDE-SubstituteUID=false
